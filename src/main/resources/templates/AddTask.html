@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple To-Do List</title>
+</head>
+<body>
+  
+  <form th:action="@{/save}" th:object="${taskEntity}" method="post">
+    
+    <label>Task Detail:</label><br>
+    <input type="text" th:field="*{taskdetail}" placeholder="Enter task detail"><br><br>
+    
+    <label>Status:</label><br>
+    <input type="text" th:field="*{status}" placeholder="e.g. working"><br><br>
+    
+    <label>Target Date:</label><br>
+    <input type="date" th:field="*{date}" placeholder="date to complete the task"><br><br>
+
+    <button type="submit">Add</button>
+    <button type="reset">Reset</button><br><br>
+
+    <a href="/all-task" class="home-btn">Go to Home</a>
+  </form>
+
+</body>
+</html>

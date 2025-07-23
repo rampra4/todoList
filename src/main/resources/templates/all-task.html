@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 12px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            border-radius: 4px;
+        }
+        .update-btn {
+            background-color: #2196F3;
+        }
+        .delete-btn {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Task List</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Serial No</th>
+            <th>Task Detail</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+<tbody>
+  <tr th:each="task, iterStat : ${tasks}">
+      <td th:text="${iterStat.count}"></td>
+      <td th:text="${task.taskdetail}"></td>
+      <td th:text="${task.date}"></td>
+      <td th:text="${task.status}"></td>
+    
+      <td>
+        <form th:action="@{/edit/{id}(id=${task.id})}" method="get">
+        <button type="submit" class="btn update-btn">Update</button>
+        </form>
+    </td>
+    <td>
+        <form th:action="@{/delete/{id}(id=${task.id})}" method="post">
+        <button type="submit" class="btn delete-btn">delete</button>
+        </form>
+    </td>
+  </tr>
+</tbody>
+
+</table>
+    <br> <button class="btn update-btn"> <a th:href="@{/index}" >Add a new Task</a></button>
+</body>
+</html>
