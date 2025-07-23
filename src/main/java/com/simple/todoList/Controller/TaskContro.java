@@ -19,6 +19,11 @@ public class TaskContro {
     @Autowired
     TaskService taskService;
 
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
+
     @GetMapping("/index")
     public String index(Model model) {
         model.addAttribute("taskEntity", new TaskEntity());
