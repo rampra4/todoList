@@ -32,9 +32,6 @@ public class TaskContro {
 
     @PostMapping("/save")
     public String savetask(@ModelAttribute TaskEntity taskEntity){
-        // System.out.println("Date: " + taskEntity.getDate());
-        // System.out.println("Status: " + taskEntity.getStatus());
-        // System.out.println("Task: " + taskEntity.getTaskdetail());
         taskService.saveTask(taskEntity);
          return "redirect:/all-task";
     }
